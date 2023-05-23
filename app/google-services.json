@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "970965653698",
+    "project_id": "courses-da169",
+    "storage_bucket": "courses-da169.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:970965653698:android:2dbc8807994093ce34835b",
+        "android_client_info": {
+          "package_name": "mrandroid.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "970965653698-vbq2bthkap8p47jlpdr3nc77abql753v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYV9JLTs6FwlOsUk6OMSg35X9pfXJKgOA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "970965653698-vbq2bthkap8p47jlpdr3nc77abql753v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

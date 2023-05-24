@@ -11,6 +11,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <TextView
+            android:id="@+id/tv_browseApp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Browse app"
+            android:layout_margin="@dimen/_16sdp"
+            android:textColor="?attr/colorPrimaryVariant"
+            android:textSize="@dimen/_14ssp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <ImageView
             android:id="@+id/iv_logo"
             android:layout_width="@dimen/_100sdp"
@@ -84,19 +96,19 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_forgot">
 
             <RadioButton
-                android:id="@+id/rbStudent"
+                android:id="@+id/rbCustomer"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:checked="true"
-                android:text="Student" />
+                android:text="Customer" />
 
             <RadioButton
-                android:id="@+id/rbTeacher"
+                android:id="@+id/rbAdmin"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Teacher" />
+                android:text="Admin" />
         </RadioGroup>
 
         <Button

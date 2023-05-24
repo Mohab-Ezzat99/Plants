@@ -63,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(getBaseContext(), "Welcome! Login Successfully", Toast.LENGTH_LONG).show();
 
                         Constants.IS_TEACHER =
-                                (binding.radioGroup.getCheckedRadioButtonId() == R.id.rbTeacher);
+                                (binding.radioGroup.getCheckedRadioButtonId() == R.id.rbCustomer);
                         startActivity(new Intent(getBaseContext(), HomeActivity.class));
                         finish();
                     } else {

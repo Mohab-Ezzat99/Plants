@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "970965653698",
-    "project_id": "courses-da169",
-    "storage_bucket": "courses-da169.appspot.com"
+    "project_number": "315830676929",
+    "project_id": "plants-a1c3a",
+    "storage_bucket": "plants-a1c3a.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:970965653698:android:2dbc8807994093ce34835b",
+        "mobilesdk_app_id": "1:315830676929:android:6ec5c62439d14f3b2d9340",
         "android_client_info": {
           "package_name": "mrandroid.app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "970965653698-vbq2bthkap8p47jlpdr3nc77abql753v.apps.googleusercontent.com",
+          "client_id": "315830676929-mo66ole8g2j3qdf3k4dus2v9gjhclssf.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDYV9JLTs6FwlOsUk6OMSg35X9pfXJKgOA"
+          "current_key": "AIzaSyC-LzPPfpU_yIKuhc7y5c4i43f61GZjTpc"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "970965653698-vbq2bthkap8p47jlpdr3nc77abql753v.apps.googleusercontent.com",
+              "client_id": "315830676929-mo66ole8g2j3qdf3k4dus2v9gjhclssf.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

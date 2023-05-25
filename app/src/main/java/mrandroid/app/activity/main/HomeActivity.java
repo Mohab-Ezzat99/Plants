@@ -2,9 +2,13 @@ package mrandroid.app.activity.main;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
+
+import mrandroid.app.R;
 import mrandroid.app.ViewModel;
 import mrandroid.app.activity.admin.AddPlantActivity;
 import mrandroid.app.adapter.PlantsAdapter;
@@ -29,7 +33,7 @@ public class HomeActivity extends AppCompatActivity implements PlantsAdapter.OnI
         plantsAdapter.setListener(this);
         binding.rvCourses.setAdapter(plantsAdapter);
 
-        if(Constants.IS_TEACHER) binding.fabAdd.setVisibility(View.VISIBLE);
+        if(Constants.IS_ADMIN) binding.fabAdd.setVisibility(View.VISIBLE);
 
         binding.fabAdd.setOnClickListener(view -> {
             Intent intent = new Intent(getBaseContext(), AddPlantActivity.class);
@@ -40,10 +44,25 @@ public class HomeActivity extends AppCompatActivity implements PlantsAdapter.OnI
     }
 
     private void fetchAllCourses() {
-        viewModel.getAllCourses().observe(this, courseModels -> {
+        viewModel.getAllPlants().observe(this, courseModels -> {
             plantsAdapter.setList(courseModels);
             plantsAdapter.notifyDataSetChanged();
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_home, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId()== R.id.menu_cart) {
+            Intent intent = new Intent(this, CartActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

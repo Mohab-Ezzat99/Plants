@@ -4,17 +4,20 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
 import mrandroid.app.R;
+import mrandroid.app.ViewModel;
 import mrandroid.app.adapter.SelectImagesAdapter;
 import mrandroid.app.databinding.ActivityAddPlantBinding;
 import mrandroid.app.model.PlantModel;
 
 public class AddPlantActivity extends AppCompatActivity implements SelectImagesAdapter.OnItemClickListener {
 
+    private ViewModel viewModel;
     private ActivityAddPlantBinding binding;
     private SelectImagesAdapter selectImagesAdapter = new SelectImagesAdapter();
     private int selectedImage = -1;
@@ -24,6 +27,8 @@ public class AddPlantActivity extends AppCompatActivity implements SelectImagesA
         super.onCreate(savedInstanceState);
         binding = ActivityAddPlantBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        viewModel = new ViewModelProvider(this).get(ViewModel.class);
 
         selectImagesAdapter.setList(getPlanetImages());
         selectImagesAdapter.setListener(this);
@@ -62,6 +67,7 @@ public class AddPlantActivity extends AppCompatActivity implements SelectImagesA
         );
 
         //insert
+        viewModel.insertPlant(plantModel);
         finish();
     }
 
@@ -76,6 +82,6 @@ public class AddPlantActivity extends AppCompatActivity implements SelectImagesA
 
     @Override
     public void onItemClick(Integer item) {
-
+        selectedImage=item;
     }
 }

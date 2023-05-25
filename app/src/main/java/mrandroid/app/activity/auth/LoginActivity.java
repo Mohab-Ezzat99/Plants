@@ -34,6 +34,11 @@ public class LoginActivity extends AppCompatActivity {
         binding.tvSignUp.setOnClickListener(view -> {
             startActivity(new Intent(getBaseContext(), SignupActivity.class));
         });
+
+        binding.tvBrowseApp.setOnClickListener(view -> {
+            startActivity(new Intent(getBaseContext(), HomeActivity.class));
+            finish();
+        });
     }
 
     private boolean checkValidation() {
@@ -62,8 +67,9 @@ public class LoginActivity extends AppCompatActivity {
                         loadingDialog.dismiss();
                         Toast.makeText(getBaseContext(), "Welcome! Login Successfully", Toast.LENGTH_LONG).show();
 
-                        Constants.IS_TEACHER =
-                                (binding.radioGroup.getCheckedRadioButtonId() == R.id.rbCustomer);
+                        Constants.IS_LOGIN = true;
+                        Constants.IS_ADMIN =
+                                (binding.radioGroup.getCheckedRadioButtonId() == R.id.rbAdmin);
                         startActivity(new Intent(getBaseContext(), HomeActivity.class));
                         finish();
                     } else {

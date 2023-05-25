@@ -15,10 +15,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import mrandroid.app.R;
-import mrandroid.app.model.PlantModel;
+import mrandroid.app.model.CartModel;
 
-public class PlantsAdapter extends RecyclerView.Adapter<PlantsAdapter.MedicineViewHolder> {
-    private List<PlantModel> list = new ArrayList<>();
+public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MedicineViewHolder> {
+    private List<CartModel> list = new ArrayList<>();
     private OnItemClickListener listener;
     private boolean canDelete = false;
     private double total = 0.0;
@@ -33,7 +33,7 @@ public class PlantsAdapter extends RecyclerView.Adapter<PlantsAdapter.MedicineVi
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull MedicineViewHolder holder, int position) {
-        PlantModel item = list.get(holder.getAdapterPosition());
+        CartModel item = list.get(holder.getAdapterPosition());
 
         holder.ivImg.setImageResource(item.getPlantImage());
         holder.tvPlantName.setText(item.getPlantName());
@@ -59,7 +59,7 @@ public class PlantsAdapter extends RecyclerView.Adapter<PlantsAdapter.MedicineVi
         return list.size();
     }
 
-    public void setList(List<PlantModel> list) {
+    public void setList(List<CartModel> list) {
         this.list = list;
         this.notifyDataSetChanged();
     }
@@ -71,8 +71,8 @@ public class PlantsAdapter extends RecyclerView.Adapter<PlantsAdapter.MedicineVi
 
     public double getTotal() {
         total = 0.0;
-        for (PlantModel item : list) {
-            total += item.getPrice();
+        for (CartModel item : list) {
+            total += item.getPrice() * item.getQty();
         }
         return total;
     }
@@ -106,7 +106,7 @@ public class PlantsAdapter extends RecyclerView.Adapter<PlantsAdapter.MedicineVi
     }
 
     public interface OnItemClickListener {
-        void onItemClick(PlantModel plantModel);
-        void onItemDelete(PlantModel plantModel);
+        void onItemClick(CartModel plantModel);
+        void onItemDelete(CartModel plantModel);
     }
 }

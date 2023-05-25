@@ -6,9 +6,9 @@ import androidx.room.PrimaryKey;
 import java.io.Serializable;
 
 @Entity
-public class PlantModel implements Serializable {
+public class CartModel implements Serializable {
 
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     private int id;
     private String plantName;
     private int plantImage;
@@ -16,9 +16,10 @@ public class PlantModel implements Serializable {
     private String description;
     private float price;
     private float rate;
-    private int qty = 1;
+    private int qty;
 
-    public PlantModel(String plantName, int plantImage, String color, String description, float price, float rate, int qty) {
+    public CartModel(int id, String plantName, int plantImage, String color, String description, float price, float rate, int qty) {
+        this.id = id;
         this.plantName = plantName;
         this.plantImage = plantImage;
         this.color = color;
@@ -90,9 +91,5 @@ public class PlantModel implements Serializable {
 
     public void setQty(int qty) {
         this.qty = qty;
-    }
-
-    public CartModel toCartModel(int qty) {
-        return new CartModel(id,plantName, plantImage, color, description, price, rate, qty);
     }
 }

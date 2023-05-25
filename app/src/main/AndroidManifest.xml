@@ -16,7 +16,7 @@
         <activity
             android:name=".activity.main.PlantDetailsActivity"
             android:exported="false"
-            android:label="Course Details">
+            android:label="Plant Details">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -24,7 +24,7 @@
         <activity
             android:name=".activity.admin.AddPlantActivity"
             android:exported="false"
-            android:label="Add Course">
+            android:label="Add Plant">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -62,8 +62,8 @@
         <activity
             android:name=".activity.main.HomeActivity"
             android:exported="true"
-            android:label="Home"
-            android:windowSoftInputMode="adjustResize"/>
+            android:label="Home">
+        </activity>
         <activity
             android:name=".activity.main.CartActivity"
             android:exported="true"

@@ -59,7 +59,7 @@
         android:layout_margin="@dimen/_8sdp"
         android:backgroundTint="@android:color/holo_green_light"
         android:paddingVertical="@dimen/_8sdp"
-        android:text="Contact"
+        android:text="Contact: 01203334444"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="@dimen/_12ssp"

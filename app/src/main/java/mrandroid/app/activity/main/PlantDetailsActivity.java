@@ -4,15 +4,19 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
+import mrandroid.app.ViewModel;
 import mrandroid.app.databinding.ActivityPlantDetailsBinding;
 import mrandroid.app.model.PlantModel;
 import mrandroid.app.util.Constants;
 
 public class PlantDetailsActivity extends AppCompatActivity {
 
+    private ViewModel viewModel;
+    private PlantModel plantModel;
     private ActivityPlantDetailsBinding binding;
-    private int qty = 1;
+    private int qty=1;
     private int cartStatus = 0; // add=0 , update=1 , delete=2
 
     @Override
@@ -21,29 +25,33 @@ public class PlantDetailsActivity extends AppCompatActivity {
         binding = ActivityPlantDetailsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        PlantModel plantModel = (PlantModel) getIntent().getSerializableExtra(Constants.PLANT_MODEL);
+        plantModel = (PlantModel) getIntent().getSerializableExtra(Constants.PLANT_MODEL);
+
+        viewModel = new ViewModelProvider(this).get(ViewModel.class);
 
         binding.ivImg.setImageResource(plantModel.getPlantImage());
         binding.tvPlantName.setText(plantModel.getPlantName());
-        binding.tvColor.setText(plantModel.getColor());
-        binding.tvNumber.setText(plantModel.getQty()+"");
+        binding.tvColor.setText("Color: " + plantModel.getColor());
+        binding.tvNumber.setText("Quantity: " + plantModel.getQty());
         binding.tvDescription.setText(plantModel.getDescription());
-        binding.tvPrice.setText(plantModel.getPrice() + " SAR");
+        binding.tvPrice.setText("Price: " + plantModel.getPrice() + " SAR");
         binding.ratingBar.setRating(plantModel.getRate());
 
         binding.ivPlus.setOnClickListener(view -> {
-            binding.tvQty.setText((++qty) + "");
-            binding.tvPrice.setText(plantModel.getPrice() * qty + " SAR");
-            if (cartStatus == 2) {
-                cartStatus = 1;
-                binding.btnCart.setText("Update cart");
+            if(qty < plantModel.getQty()) {
+                binding.tvQty.setText((++qty) + "");
+                binding.tvPrice.setText("Price: " + plantModel.getPrice() * qty + " SAR");
+                if (cartStatus == 2) {
+                    cartStatus = 1;
+                    binding.btnCart.setText("Update cart");
+                }
             }
         });
 
         binding.ivMinus.setOnClickListener(view -> {
-            if (qty > 0) {
+            if (qty > 1) {
                 binding.tvQty.setText((--qty) + "");
-                binding.tvPrice.setText(plantModel.getPrice() * qty + " SAR");
+                binding.tvPrice.setText("Price: " + plantModel.getPrice() * qty + " SAR");
                 if (cartStatus == 2) {
                     cartStatus = 1;
                     binding.btnCart.setText("Update cart");
@@ -55,18 +63,22 @@ public class PlantDetailsActivity extends AppCompatActivity {
             switch (cartStatus) {
                 case 0:
                     // add
+                    viewModel.insertPlantToCart(plantModel.toCartModel(qty));
                     cartStatus = 2;
                     Toast.makeText(this, "Added to cart successfully", Toast.LENGTH_SHORT).show();
                     binding.btnCart.setText("Delete from cart");
                     break;
                 case 1:
                     // update
+                    viewModel.deletePlantFromCart(plantModel.toCartModel(qty));
+                    viewModel.insertPlantToCart(plantModel.toCartModel(qty));
                     cartStatus = 2;
                     Toast.makeText(this, "Updated cart successfully", Toast.LENGTH_SHORT).show();
                     binding.btnCart.setText("Delete from cart");
                     break;
                 case 2:
-                    // update
+                    // delete
+                    viewModel.deletePlantFromCart(plantModel.toCartModel(qty));
                     cartStatus = 0;
                     Toast.makeText(this, "Deleted from cart successfully", Toast.LENGTH_SHORT).show();
                     binding.btnCart.setText("Add to cart");
@@ -74,5 +86,18 @@ public class PlantDetailsActivity extends AppCompatActivity {
             }
         });
 
+        fetchCartItem();
+    }
+
+    private void fetchCartItem() {
+        viewModel.getCartById(plantModel.getId()).observe(this, cartModel -> {
+            if (cartModel == null) {
+                cartStatus = 0;
+                binding.btnCart.setText("Add to cart");
+            } else {
+                cartStatus = 2;
+                binding.btnCart.setText("Delete from cart");
+            }
+        });
     }
 }

@@ -6,14 +6,14 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
+import mrandroid.app.model.CartModel;
 import mrandroid.app.model.PlantModel;
 
 @Database(
-        entities = {PlantModel.class},
+        entities = {PlantModel.class, CartModel.class},
         version = 1,
         exportSchema = false
 )
-@TypeConverters(Converters.class)
 public abstract class AppDB extends RoomDatabase {
     private static AppDB instance;
 

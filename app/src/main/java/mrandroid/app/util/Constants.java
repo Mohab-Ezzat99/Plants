@@ -2,8 +2,8 @@ package mrandroid.app.util;
 
 public class Constants {
 
-    public static String PLANT_MODEL = "courseModel";
-    public static String QUESTIONS_NUMBER = "questionsNumber";
-    public static String IS_INSERTION = "isInsertion";
-    public static boolean IS_TEACHER = true;
+    public static String PLANT_MODEL = "plantModel";
+    public static boolean IS_ADMIN = true;
+    public static boolean IS_LOGIN = false;
+
 }

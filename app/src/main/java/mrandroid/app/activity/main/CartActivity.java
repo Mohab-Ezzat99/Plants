@@ -3,21 +3,23 @@ package mrandroid.app.activity.main;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import mrandroid.app.ViewModel;
-import mrandroid.app.adapter.PlantsAdapter;
+import mrandroid.app.activity.auth.LoginActivity;
+import mrandroid.app.adapter.CartAdapter;
 import mrandroid.app.databinding.ActivityCartBinding;
-import mrandroid.app.model.PlantModel;
+import mrandroid.app.model.CartModel;
 import mrandroid.app.util.Constants;
 
-public class CartActivity extends AppCompatActivity implements PlantsAdapter.OnItemClickListener {
+public class CartActivity extends AppCompatActivity implements CartAdapter.OnItemClickListener {
 
     private ViewModel viewModel;
     private ActivityCartBinding binding;
-    private PlantsAdapter plantsAdapter = new PlantsAdapter();
+    private CartAdapter cartAdapter = new CartAdapter();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,19 +29,27 @@ public class CartActivity extends AppCompatActivity implements PlantsAdapter.OnI
 
         viewModel = new ViewModelProvider(this).get(ViewModel.class);
 
-        plantsAdapter.setCanDelete(true);
-        plantsAdapter.setListener(this);
-        binding.rvPlants.setAdapter(plantsAdapter);
+        cartAdapter.setCanDelete(true);
+        cartAdapter.setListener(this);
+        binding.rvPlants.setAdapter(cartAdapter);
 
         binding.btnCheckout.setOnClickListener(view -> {
-
+            if(Constants.IS_LOGIN){
+                Intent intent = new Intent(this, CheckoutActivity.class);
+                startActivity(intent);
+            } else {
+                Toast.makeText(this, "You must login first", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, LoginActivity.class);
+                startActivity(intent);
+                finishAffinity();
+            }
         });
 
         fetchAllCourses();
     }
 
     private void fetchAllCourses() {
-        viewModel.getAllCourses().observe(this, courseModels -> {
+        viewModel.getAllCart().observe(this, courseModels -> {
             if (courseModels.isEmpty()) {
                 binding.tvEmpty.setVisibility(View.VISIBLE);
                 binding.clDesign.setVisibility(View.GONE);
@@ -47,21 +57,22 @@ public class CartActivity extends AppCompatActivity implements PlantsAdapter.OnI
                 binding.tvEmpty.setVisibility(View.GONE);
                 binding.clDesign.setVisibility(View.VISIBLE);
             }
-            plantsAdapter.setList(courseModels);
-            plantsAdapter.notifyDataSetChanged();
-            binding.tvTotal.setText("Total: " + plantsAdapter.getTotal() + " SAR");
+            cartAdapter.setList(courseModels);
+            cartAdapter.notifyDataSetChanged();
+            binding.tvTotal.setText("Total: " + cartAdapter.getTotal() + " SAR");
         });
     }
 
     @Override
-    public void onItemClick(PlantModel plantModel) {
+    public void onItemClick(CartModel cartModel) {
         Intent intent = new Intent(this, PlantDetailsActivity.class);
-        intent.putExtra(Constants.PLANT_MODEL, plantModel);
+        intent.putExtra(Constants.PLANT_MODEL, cartModel);
         startActivity(intent);
     }
 
     @Override
-    public void onItemDelete(PlantModel plantModel) {
+    public void onItemDelete(CartModel cartModel) {
         // delete
+        viewModel.deletePlantFromCart(cartModel);
     }
 }

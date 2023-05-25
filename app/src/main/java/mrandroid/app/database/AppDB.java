@@ -6,11 +6,10 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
-import mrandroid.app.model.CourseModel;
-import mrandroid.app.model.QuestionModel;
+import mrandroid.app.model.PlantModel;
 
 @Database(
-        entities = {CourseModel.class},
+        entities = {PlantModel.class},
         version = 1,
         exportSchema = false
 )

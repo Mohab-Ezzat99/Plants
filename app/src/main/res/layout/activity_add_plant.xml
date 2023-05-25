@@ -5,26 +5,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    tools:context=".activity.teacher.AddCourseActivity">
+    tools:context=".activity.admin.AddPlantActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvImgs"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:itemCount="3"
+            tools:listitem="@layout/item_image_selection" />
+
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/itl_courseName"
+            android:id="@+id/itl_plantName"
             style="@style/TextInputLayoutStyle"
             android:layout_width="@dimen/_270sdp"
             android:layout_height="wrap_content"
+            android:hint="Plant name"
             android:layout_marginTop="@dimen/_8sdp"
-            android:hint="Course name"
             android:textColorHint="@color/gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/rvImgs">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_courseName"
+                android:id="@+id/et_plantName"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="text"
@@ -32,19 +44,19 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/itl_videoUrl"
+            android:id="@+id/itl_color"
             style="@style/TextInputLayoutStyle"
             android:layout_width="@dimen/_270sdp"
             android:layout_height="wrap_content"
+            android:hint="Color"
             android:layout_marginTop="@dimen/_8sdp"
-            android:hint="Video url"
             android:textColorHint="@color/gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/itl_courseName">
+            app:layout_constraintTop_toBottomOf="@+id/itl_plantName">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_videoUrl"
+                android:id="@+id/et_color"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="text"
@@ -52,39 +64,19 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/itl_teacherName"
+            android:id="@+id/itl_qty"
             style="@style/TextInputLayoutStyle"
             android:layout_width="@dimen/_270sdp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_8sdp"
-            android:hint="Teacher name"
+            android:hint="Quantity"
             android:textColorHint="@color/gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/itl_videoUrl">
+            app:layout_constraintTop_toBottomOf="@+id/itl_color">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_teacherName"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:inputType="text"
-                android:textColor="?attr/colorOnSecondary" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/itl_teacherPhone"
-            style="@style/TextInputLayoutStyle"
-            android:layout_width="@dimen/_270sdp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_8sdp"
-            android:hint="Teacher phone"
-            android:textColorHint="@color/gray"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/itl_teacherName">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_teacherPhone"
+                android:id="@+id/et_qty"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="phone"
@@ -101,7 +93,7 @@
             android:textColorHint="@color/gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/itl_teacherPhone">
+            app:layout_constraintTop_toBottomOf="@+id/itl_qty">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_price"

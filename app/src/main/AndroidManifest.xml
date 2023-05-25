@@ -14,15 +14,7 @@
         android:theme="@style/Theme.Attendance"
         tools:targetApi="31">
         <activity
-            android:name=".activity.teacher.QuestionsNumberActivity"
-            android:exported="false"
-            android:label="Add Exam">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".activity.main.CourseDetailsActivity"
+            android:name=".activity.main.PlantDetailsActivity"
             android:exported="false"
             android:label="Course Details">
             <meta-data
@@ -30,15 +22,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".activity.teacher.AddExamActivity"
-            android:exported="false"
-            android:label="Questions">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".activity.teacher.AddCourseActivity"
+            android:name=".activity.admin.AddPlantActivity"
             android:exported="false"
             android:label="Add Course">
             <meta-data
@@ -79,9 +63,15 @@
             android:name=".activity.main.HomeActivity"
             android:exported="true"
             android:label="Home"
-            android:windowSoftInputMode="adjustResize">
-
-        </activity>
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".activity.main.CartActivity"
+            android:exported="true"
+            android:label="Cart"/>
+        <activity
+            android:name=".activity.main.CheckoutActivity"
+            android:exported="true"
+            android:label="Checkout"/>
     </application>
 
 </manifest>

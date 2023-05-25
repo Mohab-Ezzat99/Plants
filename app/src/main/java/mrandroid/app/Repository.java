@@ -7,7 +7,7 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import mrandroid.app.database.AppDB;
 import mrandroid.app.database.AppDao;
-import mrandroid.app.model.CourseModel;
+import mrandroid.app.model.PlantModel;
 
 public class Repository {
     private final AppDao appDao;
@@ -16,14 +16,14 @@ public class Repository {
         this.appDao = AppDB.getInstance(application).appDao();
     }
 
-    public void insertCourse(CourseModel courseModel) {
-        appDao.insertCourse(courseModel)
+    public void insertCourse(PlantModel plantModel) {
+        appDao.insertCourse(plantModel)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe();
     }
 
-    public LiveData<List<CourseModel>> getAllCourses() {
+    public LiveData<List<PlantModel>> getAllCourses() {
         return appDao.getAllCourses();
     }
 

@@ -5,8 +5,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import java.util.List;
-import mrandroid.app.model.CourseModel;
-import mrandroid.app.model.QuestionModel;
+import mrandroid.app.model.PlantModel;
 
 public class ViewModel extends AndroidViewModel {
 
@@ -17,11 +16,11 @@ public class ViewModel extends AndroidViewModel {
         repository = new Repository(application);
     }
 
-    public void insertCourse(CourseModel courseModel) {
-        repository.insertCourse(courseModel);
+    public void insertCourse(PlantModel plantModel) {
+        repository.insertCourse(plantModel);
     }
 
-    public LiveData<List<CourseModel>> getAllCourses() {
+    public LiveData<List<PlantModel>> getAllCourses() {
         return repository.getAllCourses();
     }
 

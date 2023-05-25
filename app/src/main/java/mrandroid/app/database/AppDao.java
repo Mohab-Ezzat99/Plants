@@ -7,18 +7,18 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import java.util.List;
 import io.reactivex.rxjava3.core.Completable;
-import mrandroid.app.model.CourseModel;
+import mrandroid.app.model.PlantModel;
 
 @Dao
 public interface AppDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    Completable insertCourse(CourseModel courseModel);
+    Completable insertCourse(PlantModel plantModel);
 
-    @Query("SELECT * FROM CourseModel")
-    LiveData<List<CourseModel>> getAllCourses();
+    @Query("SELECT * FROM PlantModel")
+    LiveData<List<PlantModel>> getAllCourses();
 
-    @Query("DELETE FROM CourseModel")
+    @Query("DELETE FROM PlantModel")
     Completable deleteAllCourses();
 
 }

@@ -68,7 +68,7 @@ public class HomeActivity extends AppCompatActivity implements PlantsAdapter.OnI
     @Override
     public void onItemClick(PlantModel plantModel) {
         Intent intent = new Intent(this, PlantDetailsActivity.class);
-        intent.putExtra(Constants.PLANT_MODEL, plantModel);
+        intent.putExtra(Constants.PLANT_ID, plantModel.getId());
         startActivity(intent);
     }
 

@@ -59,7 +59,7 @@ public class CheckoutActivity extends AppCompatActivity implements CartAdapter.O
     @Override
     public void onItemClick(CartModel cartModel) {
         Intent intent = new Intent(this, PlantDetailsActivity.class);
-        intent.putExtra(Constants.PLANT_MODEL, cartModel);
+        intent.putExtra(Constants.PLANT_ID, cartModel.getId());
         startActivity(intent);
     }
 

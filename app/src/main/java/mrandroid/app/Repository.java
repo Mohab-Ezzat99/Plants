@@ -28,6 +28,10 @@ public class Repository {
         return appDao.getAllPlants();
     }
 
+    public LiveData<PlantModel> getPlantById(int id) {
+        return appDao.getPlantById(id);
+    }
+
     public void deleteAllPlants() {
         appDao.deleteAllPlants()
                 .subscribeOn(Schedulers.io())

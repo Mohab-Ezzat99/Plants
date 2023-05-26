@@ -26,6 +26,10 @@ public class ViewModel extends AndroidViewModel {
         return repository.getAllPlants();
     }
 
+    public LiveData<PlantModel> getPlantById(int id) {
+        return repository.getPlantById(id);
+    }
+
     public void deleteAllPlants() {
         repository.deleteAllPlants();
     }

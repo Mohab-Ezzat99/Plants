@@ -23,6 +23,9 @@ public interface AppDao {
     @Query("SELECT * FROM PlantModel")
     LiveData<List<PlantModel>> getAllPlants();
 
+    @Query("SELECT * FROM PlantModel WHERE id=:id")
+    LiveData<PlantModel> getPlantById(int id);
+
     @Query("DELETE FROM PlantModel")
     Completable deleteAllPlants();
 

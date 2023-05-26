@@ -62,16 +62,27 @@
         <activity
             android:name=".activity.main.HomeActivity"
             android:exported="true"
-            android:label="Home">
-        </activity>
+            android:label="Home"/>
         <activity
             android:name=".activity.main.CartActivity"
             android:exported="true"
-            android:label="Cart"/>
+            android:label="Cart" />
         <activity
             android:name=".activity.main.CheckoutActivity"
             android:exported="true"
-            android:label="Checkout"/>
+            android:label="Checkout" />
+        <activity
+            android:name=".activity.main.AboutUsActivity"
+            android:exported="true"
+            android:label="About us" />
+        <activity
+            android:name=".activity.main.RatingActivity"
+            android:exported="true"
+            android:label="Rate us" />
+        <activity
+            android:name=".activity.main.ReviewActivity"
+            android:exported="true"
+            android:label="Reviews" />
     </application>
 
 </manifest>

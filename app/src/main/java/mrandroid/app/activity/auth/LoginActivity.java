@@ -36,6 +36,7 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         binding.tvBrowseApp.setOnClickListener(view -> {
+            Constants.IS_ADMIN = false;
             startActivity(new Intent(getBaseContext(), HomeActivity.class));
             finish();
         });

@@ -8,9 +8,10 @@ import androidx.room.TypeConverters;
 
 import mrandroid.app.model.CartModel;
 import mrandroid.app.model.PlantModel;
+import mrandroid.app.model.RateModel;
 
 @Database(
-        entities = {PlantModel.class, CartModel.class},
+        entities = {PlantModel.class, CartModel.class, RateModel.class},
         version = 1,
         exportSchema = false
 )

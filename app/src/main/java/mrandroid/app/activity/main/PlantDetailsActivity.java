@@ -1,12 +1,17 @@
 package mrandroid.app.activity.main;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import mrandroid.app.R;
 import mrandroid.app.ViewModel;
+import mrandroid.app.activity.admin.AddPlantActivity;
 import mrandroid.app.databinding.ActivityPlantDetailsBinding;
 import mrandroid.app.model.PlantModel;
 import mrandroid.app.util.Constants;
@@ -30,6 +35,7 @@ public class PlantDetailsActivity extends AppCompatActivity {
 
         viewModel = new ViewModelProvider(this).get(ViewModel.class);
         viewModel.getPlantById(plantId).observe(this, plantModel -> {
+            if(plantModel==null) return;
             this.plantModel = plantModel;
 
             binding.ivImg.setImageResource(plantModel.getPlantImage());
@@ -103,5 +109,35 @@ public class PlantDetailsActivity extends AppCompatActivity {
                 binding.btnCart.setText("Delete from cart");
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_plant, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        menu.getItem(0).setVisible(Constants.IS_ADMIN);
+        menu.getItem(1).setVisible(Constants.IS_ADMIN);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.menu_edit) {
+            Intent intent = new Intent(this, AddPlantActivity.class);
+            intent.putExtra(Constants.PLANT_MODEL, plantModel);
+            startActivity(intent);
+            finish();
+            return true;
+        }
+        if (item.getItemId() == R.id.menu_delete) {
+            Toast.makeText(this, "Plant deleted successfully", Toast.LENGTH_SHORT).show();
+            finish();
+            viewModel.deletePlant(plantModel);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -14,6 +14,7 @@ import mrandroid.app.ViewModel;
 import mrandroid.app.adapter.SelectImagesAdapter;
 import mrandroid.app.databinding.ActivityAddPlantBinding;
 import mrandroid.app.model.PlantModel;
+import mrandroid.app.util.Constants;
 
 public class AddPlantActivity extends AppCompatActivity implements SelectImagesAdapter.OnItemClickListener {
 
@@ -21,6 +22,7 @@ public class AddPlantActivity extends AppCompatActivity implements SelectImagesA
     private ActivityAddPlantBinding binding;
     private SelectImagesAdapter selectImagesAdapter = new SelectImagesAdapter();
     private int selectedImage = -1;
+    private PlantModel plantModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,17 @@ public class AddPlantActivity extends AppCompatActivity implements SelectImagesA
         setContentView(binding.getRoot());
 
         viewModel = new ViewModelProvider(this).get(ViewModel.class);
+        plantModel = (PlantModel) getIntent().getSerializableExtra(Constants.PLANT_MODEL);
+        if (plantModel != null) {
+            selectedImage =plantModel.getPlantImage();
+            selectImagesAdapter.setSelected(plantModel.getPlantImage());
+            binding.etPlantName.setText(plantModel.getPlantName());
+            binding.etColor.setText(plantModel.getColor());
+            binding.etQty.setText(plantModel.getQty() + "");
+            binding.etPrice.setText(plantModel.getPrice() + "");
+            binding.etRate.setText(plantModel.getRate() + "");
+            binding.etDescription.setText(plantModel.getDescription());
+        }
 
         selectImagesAdapter.setList(getPlanetImages());
         selectImagesAdapter.setListener(this);
@@ -55,19 +68,29 @@ public class AddPlantActivity extends AppCompatActivity implements SelectImagesA
             return;
         }
 
-
-        PlantModel plantModel = new PlantModel(
-                plantName,
-                selectedImage,
-                color,
-                description,
-                Float.parseFloat(price),
-                Float.parseFloat(rate),
-                Integer.parseInt(qty)
-        );
-
-        //insert
-        viewModel.insertPlant(plantModel);
+        if (this.plantModel != null) {
+            this.plantModel.setPlantName(plantName);
+            this.plantModel.setPlantImage(selectedImage);
+            this.plantModel.setColor(color);
+            this.plantModel.setDescription(description);
+            this.plantModel.setPrice(Float.parseFloat(price));
+            this.plantModel.setRate(Float.parseFloat(rate));
+            this.plantModel.setQty(Integer.parseInt(qty));
+            viewModel.updatePlant(this.plantModel);
+            Toast.makeText(this, "Plant updated successfully", Toast.LENGTH_SHORT).show();
+        } else {
+            PlantModel plantModel = new PlantModel(
+                    plantName,
+                    selectedImage,
+                    color,
+                    description,
+                    Float.parseFloat(price),
+                    Float.parseFloat(rate),
+                    Integer.parseInt(qty)
+            );
+            viewModel.insertPlant(plantModel);
+            Toast.makeText(this, "Plant inserted successfully", Toast.LENGTH_SHORT).show();
+        }
         finish();
     }
 

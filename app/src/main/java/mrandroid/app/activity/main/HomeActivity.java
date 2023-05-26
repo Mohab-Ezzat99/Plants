@@ -1,10 +1,12 @@
 package mrandroid.app.activity.main;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -56,9 +58,31 @@ public class HomeActivity extends AppCompatActivity implements PlantsAdapter.OnI
         return true;
     }
 
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        menu.getItem(0).setVisible(Constants.IS_ADMIN);
+        return true;
+    }
+
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId()== R.id.menu_cart) {
+        if (item.getItemId() == R.id.menu_rate) {
+            Intent intent = new Intent(this, ReviewActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        if (item.getItemId() == R.id.menu_cart) {
             Intent intent = new Intent(this, CartActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        if (item.getItemId() == R.id.menu_contact) {
+            Intent intent = new Intent(Intent.ACTION_DIAL);
+            intent.setData(Uri.parse("tel:01203334444"));
+            startActivity(intent);
+            return true;
+        }
+        if (item.getItemId() == R.id.menu_about) {
+            Intent intent = new Intent(this, AboutUsActivity.class);
             startActivity(intent);
             return true;
         }

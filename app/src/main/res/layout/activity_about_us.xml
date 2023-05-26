@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:fitsSystemWindows="true"
+    android:scrollbars="none">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_browseApp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_16sdp"
+            android:padding="@dimen/_8sdp"
+            android:text="Welcome to our Plants Ecommerce Shop! We are passionate about bringing nature's beauty and tranquility into your home. With a wide selection of lush and vibrant plants, we strive to inspire and enhance your living spaces with the power of greenery.
+
+At our shop, we understand that plants have a unique ability to create a refreshing and inviting atmosphere. Whether you're a seasoned plant enthusiast or just beginning your journey into the world of indoor gardening, we are here to support you every step of the way.
+
+Our team consists of experienced horticulturists and plant lovers who carefully curate our collection to ensure that you have access to the highest quality and healthiest plants available. We work closely with trusted nurseries and growers to source an extensive variety of plants, including tropical foliage, succulents, air plants, flowering beauties, and much more.
+
+We believe that everyone should have the opportunity to experience the joy of nurturing and growing plants. That's why we offer a range of options suitable for different skill levels, from low-maintenance plants for beginners to rare specimens for seasoned collectors. Our detailed plant descriptions and care guides provide you with all the information you need to select the perfect plant for your space and ensure its ongoing health and vitality.
+
+Customer satisfaction is our top priority. From the moment you browse our website to the delivery of your carefully packaged plants, we strive to provide an exceptional shopping experience. Our dedicated customer support team is always available to answer your questions, provide guidance, and address any concerns you may have.
+
+In addition to offering a wide range of plants, we also provide a selection of stylish pots, planters, and other accessories to help you create stunning plant displays that complement your personal style and interior design.
+
+We are committed to sustainability and eco-conscious practices. Our packaging materials are carefully chosen to minimize waste and ensure the safe transportation of your plants. We also offer tips and resources for responsible plant care, including water conservation and organic gardening practices.
+
+Thank you for choosing our Plants Ecommerce Shop as your go-to destination for all your plant needs. We look forward to being a part of your plant-filled journey, helping you create a harmonious and green oasis in your home. Happy planting!"
+            android:textColor="@color/black"
+            android:lineSpacingExtra="@dimen/_4sdp"
+            android:textSize="@dimen/_12ssp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

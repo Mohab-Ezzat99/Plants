@@ -1,47 +1,47 @@
 package mrandroid.app.adapter;
 
 import android.annotation.SuppressLint;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import mrandroid.app.R;
+import mrandroid.app.model.RateModel;
 
-public class SelectImagesAdapter extends RecyclerView.Adapter<SelectImagesAdapter.MedicineViewHolder> {
-    private List<Integer> list = new ArrayList<>();
+public class RateAdapter extends RecyclerView.Adapter<RateAdapter.MedicineViewHolder> {
+    private List<RateModel> list = new ArrayList<>();
     private OnItemClickListener listener;
-    private int selectedImg = -1;
 
     @SuppressLint("InflateParams")
     @NonNull
     @Override
     public MedicineViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new MedicineViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_image_selection, parent, false));
+        return new MedicineViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_rate, parent, false));
     }
 
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull MedicineViewHolder holder, int position) {
-        Integer item = list.get(holder.getAdapterPosition());
+        RateModel item = list.get(holder.getAdapterPosition());
 
-        holder.ivImage.setImageResource(item);
+        holder.tvComment.setText(item.getComment());
+        holder.ratingBar.setRating(item.getRate());
 
-        if (selectedImg == item) holder.cvImgRoot.setCardBackgroundColor(Color.RED);
-        else holder.cvImgRoot.setCardBackgroundColor(Color.TRANSPARENT);
+        holder.ivDelete.setOnClickListener(view -> {
+            listener.onItemDelete(item);
+        });
 
         holder.itemView.setOnClickListener(view -> {
             listener.onItemClick(item);
-            selectedImg = item;
-            notifyDataSetChanged();
         });
     }
 
@@ -50,13 +50,8 @@ public class SelectImagesAdapter extends RecyclerView.Adapter<SelectImagesAdapte
         return list.size();
     }
 
-    public void setList(List<Integer> list) {
+    public void setList(List<RateModel> list) {
         this.list = list;
-        this.notifyDataSetChanged();
-    }
-
-    public void setSelected(Integer selected) {
-        this.selectedImg = selected;
         this.notifyDataSetChanged();
     }
 
@@ -66,19 +61,22 @@ public class SelectImagesAdapter extends RecyclerView.Adapter<SelectImagesAdapte
 
     static class MedicineViewHolder extends RecyclerView.ViewHolder {
 
-        private final ImageView ivImage;
-        private final CardView cvImgRoot;
+        private final ImageView ivDelete;
+        private final RatingBar ratingBar;
+        private final TextView tvComment;
 
         public MedicineViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            ivImage = itemView.findViewById(R.id.ivImg);
-            cvImgRoot = itemView.findViewById(R.id.cvImgRoot);
+            ivDelete = itemView.findViewById(R.id.ivDelete);
+            ratingBar = itemView.findViewById(R.id.ratingBar);
+            tvComment = itemView.findViewById(R.id.tvComment);
 
         }
     }
 
     public interface OnItemClickListener {
-        void onItemClick(Integer item);
+        void onItemClick(RateModel rateModel);
+        void onItemDelete(RateModel rateModel);
     }
 }

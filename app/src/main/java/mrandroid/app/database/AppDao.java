@@ -13,6 +13,7 @@ import java.util.List;
 import io.reactivex.rxjava3.core.Completable;
 import mrandroid.app.model.CartModel;
 import mrandroid.app.model.PlantModel;
+import mrandroid.app.model.RateModel;
 
 @Dao
 public interface AppDao {
@@ -25,6 +26,12 @@ public interface AppDao {
 
     @Query("SELECT * FROM PlantModel WHERE id=:id")
     LiveData<PlantModel> getPlantById(int id);
+
+    @Delete
+    Completable deletePlant(PlantModel plantModel);
+
+    @Update
+    Completable updatePlant(PlantModel plantModel);
 
     @Query("DELETE FROM PlantModel")
     Completable deleteAllPlants();
@@ -46,5 +53,17 @@ public interface AppDao {
 
     @Query("DELETE FROM CartModel")
     Completable deleteAllCart();
+
+    // Rate
+    //=====================================================
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    Completable insertRate(RateModel rateModel);
+
+    @Query("SELECT * FROM RateModel")
+    LiveData<List<RateModel>> getAllRates();
+
+    @Delete
+    Completable deleteRate(RateModel rateModel);
 
 }

@@ -8,6 +8,7 @@ import java.util.List;
 
 import mrandroid.app.model.CartModel;
 import mrandroid.app.model.PlantModel;
+import mrandroid.app.model.RateModel;
 
 public class ViewModel extends AndroidViewModel {
 
@@ -34,6 +35,14 @@ public class ViewModel extends AndroidViewModel {
         repository.deleteAllPlants();
     }
 
+    public void updatePlant(PlantModel plantModel) {
+        repository.updatePlant(plantModel);
+    }
+
+    public void deletePlant(PlantModel plantModel) {
+        repository.deletePlant(plantModel);
+    }
+
     // Cart
     //=====================================================
 
@@ -57,4 +66,18 @@ public class ViewModel extends AndroidViewModel {
         repository.deleteAllCart();
     }
 
+    // Rate
+    //=====================================================
+
+    public void insertRate(RateModel rateModel) {
+        repository.insertRate(rateModel);
+    }
+
+    public LiveData<List<RateModel>> getAllRates() {
+        return repository.getAllRates();
+    }
+
+    public void deleteRate(RateModel rateModel) {
+        repository.deleteRate(rateModel);
+    }
 }

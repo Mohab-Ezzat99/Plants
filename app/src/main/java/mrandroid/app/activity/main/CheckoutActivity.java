@@ -42,6 +42,8 @@ public class CheckoutActivity extends AppCompatActivity implements CartAdapter.O
         binding.btnPay.setOnClickListener(view -> {
             viewModel.deleteAllCart();
             Toast.makeText(this, "Payment successfully", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, RatingActivity.class);
+            startActivity(intent);
             finish();
         });
 

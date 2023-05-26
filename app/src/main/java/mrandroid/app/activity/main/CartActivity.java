@@ -45,10 +45,10 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.OnIte
             }
         });
 
-        fetchAllCourses();
+        fetchData();
     }
 
-    private void fetchAllCourses() {
+    private void fetchData() {
         viewModel.getAllCart().observe(this, courseModels -> {
             if (courseModels.isEmpty()) {
                 binding.tvEmpty.setVisibility(View.VISIBLE);

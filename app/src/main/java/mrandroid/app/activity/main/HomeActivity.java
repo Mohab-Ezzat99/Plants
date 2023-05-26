@@ -33,7 +33,7 @@ public class HomeActivity extends AppCompatActivity implements PlantsAdapter.OnI
         viewModel = new ViewModelProvider(this).get(ViewModel.class);
 
         plantsAdapter.setListener(this);
-        binding.rvCourses.setAdapter(plantsAdapter);
+        binding.rvPlants.setAdapter(plantsAdapter);
 
         if(Constants.IS_ADMIN) binding.fabAdd.setVisibility(View.VISIBLE);
 
@@ -42,10 +42,10 @@ public class HomeActivity extends AppCompatActivity implements PlantsAdapter.OnI
             startActivity(intent);
         });
 
-        fetchAllCourses();
+        fetchData();
     }
 
-    private void fetchAllCourses() {
+    private void fetchData() {
         viewModel.getAllPlants().observe(this, courseModels -> {
             plantsAdapter.setList(courseModels);
             plantsAdapter.notifyDataSetChanged();

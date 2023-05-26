@@ -47,10 +47,10 @@ public class CheckoutActivity extends AppCompatActivity implements CartAdapter.O
             finish();
         });
 
-        fetchAllCourses();
+        fetchData();
     }
 
-    private void fetchAllCourses() {
+    private void fetchData() {
         viewModel.getAllCart().observe(this, courseModels -> {
             cartAdapter.setList(courseModels);
             cartAdapter.notifyDataSetChanged();

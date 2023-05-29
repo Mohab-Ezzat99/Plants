@@ -37,10 +37,9 @@ public class PlantsAdapter extends RecyclerView.Adapter<PlantsAdapter.MedicineVi
 
         holder.ivImg.setImageResource(item.getPlantImage());
         holder.tvPlantName.setText(item.getPlantName());
-        holder.tvColor.setText("Color: "+item.getColor());
+        holder.tvType.setText("Type: "+item.getType());
         holder.tvNumber.setText("Qty: "+item.getQty());
         holder.tvDescription.setText(item.getDescription());
-        holder.ratingBar.setRating(item.getRate());
 
         if (canDelete) holder.ivDelete.setVisibility(View.VISIBLE);
         else holder.ivDelete.setVisibility(View.GONE);
@@ -86,10 +85,9 @@ public class PlantsAdapter extends RecyclerView.Adapter<PlantsAdapter.MedicineVi
         private final ImageView ivImg;
         private final ImageView ivDelete;
         private final TextView tvPlantName;
-        private final TextView tvColor;
+        private final TextView tvType;
         private final TextView tvNumber;
         private final TextView tvDescription;
-        private final RatingBar ratingBar;
 
         public MedicineViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -97,10 +95,9 @@ public class PlantsAdapter extends RecyclerView.Adapter<PlantsAdapter.MedicineVi
             ivImg = itemView.findViewById(R.id.ivImg);
             ivDelete = itemView.findViewById(R.id.ivDelete);
             tvPlantName = itemView.findViewById(R.id.tvPlantName);
-            tvColor = itemView.findViewById(R.id.tvColor);
+            tvType = itemView.findViewById(R.id.tvType);
             tvNumber = itemView.findViewById(R.id.tvNumber);
             tvDescription = itemView.findViewById(R.id.tvDescription);
-            ratingBar = itemView.findViewById(R.id.ratingBar);
 
         }
     }

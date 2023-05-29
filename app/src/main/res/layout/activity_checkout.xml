@@ -28,7 +28,7 @@
         android:textColor="?attr/colorOnSecondary"
         android:textSize="@dimen/_16ssp"
         app:layout_constraintBottom_toTopOf="@+id/tvTotal"
-        app:layout_constraintStart_toStartOf="@+id/btnPay" />
+        app:layout_constraintStart_toStartOf="@+id/btnRate" />
 
     <TextView
         android:id="@+id/tvTotal"
@@ -38,33 +38,17 @@
         android:layout_marginBottom="@dimen/_8sdp"
         android:textColor="?attr/colorOnSecondary"
         android:textSize="@dimen/_16ssp"
-        app:layout_constraintBottom_toTopOf="@+id/btnContact"
-        app:layout_constraintStart_toStartOf="@+id/btnPay" />
+        app:layout_constraintBottom_toTopOf="@+id/btnRate"
+        app:layout_constraintStart_toStartOf="@+id/btnRate" />
 
     <Button
-        android:id="@+id/btnContact"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_8sdp"
-        android:backgroundTint="@android:color/holo_green_light"
-        android:paddingVertical="@dimen/_8sdp"
-        android:text="Contact: 01203334444"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="@dimen/_12ssp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/btnPay"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btnPay"
+        android:id="@+id/btnRate"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/_8sdp"
         android:backgroundTint="?attr/colorPrimaryVariant"
         android:paddingVertical="@dimen/_8sdp"
-        android:text="Pay"
+        android:text="Rate us"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="@dimen/_12ssp"

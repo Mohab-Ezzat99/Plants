@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,6 +34,12 @@ public class PlantDetailsActivity extends AppCompatActivity {
 
         plantId = getIntent().getIntExtra(Constants.PLANT_ID, -1);
 
+        if(Constants.IS_ADMIN) binding.btnCart.setVisibility(View.INVISIBLE);
+        else binding.btnCart.setVisibility(View.VISIBLE);
+
+        if(Constants.IS_ADMIN) binding.tvNumber.setVisibility(View.INVISIBLE);
+        else binding.tvNumber.setVisibility(View.VISIBLE);
+
         viewModel = new ViewModelProvider(this).get(ViewModel.class);
         viewModel.getPlantById(plantId).observe(this, plantModel -> {
             if(plantModel==null) return;
@@ -40,11 +47,10 @@ public class PlantDetailsActivity extends AppCompatActivity {
 
             binding.ivImg.setImageResource(plantModel.getPlantImage());
             binding.tvPlantName.setText(plantModel.getPlantName());
-            binding.tvColor.setText("Color: " + plantModel.getColor());
+            binding.tvType.setText("Type: " + plantModel.getType());
             binding.tvNumber.setText("Quantity: " + plantModel.getQty());
             binding.tvDescription.setText(plantModel.getDescription());
             binding.tvPrice.setText("Price: " + plantModel.getPrice() + " SAR");
-            binding.ratingBar.setRating(plantModel.getRate());
 
             fetchCartItem();
         });

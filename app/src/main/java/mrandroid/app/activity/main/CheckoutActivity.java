@@ -33,15 +33,8 @@ public class CheckoutActivity extends AppCompatActivity implements CartAdapter.O
 
         binding.tvDelivery.setText("Delivery: 25 SAR");
 
-        binding.btnContact.setOnClickListener(view -> {
-            Intent intent = new Intent(Intent.ACTION_DIAL);
-            intent.setData(Uri.parse("tel:01203334444"));
-            startActivity(intent);
-        });
-
-        binding.btnPay.setOnClickListener(view -> {
+        binding.btnRate.setOnClickListener(view -> {
             viewModel.deleteAllCart();
-            Toast.makeText(this, "Payment successfully", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, RatingActivity.class);
             startActivity(intent);
             finish();

@@ -15,17 +15,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:showFullScreenButton="true" />
 
-    <RatingBar
-        android:id="@+id/ratingBar"
-        style="@style/Widget.AppCompat.RatingBar.Small"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_16sdp"
-        android:progressTint="@android:color/holo_orange_light"
-        android:rating="3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivImg" />
-
     <TextView
         android:id="@+id/tvPlantName"
         android:layout_width="wrap_content"
@@ -39,7 +28,7 @@
         app:layout_constraintTop_toBottomOf="@+id/ivImg" />
 
     <TextView
-        android:id="@+id/tvColor"
+        android:id="@+id/tvType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_4sdp"
@@ -52,12 +41,12 @@
         android:id="@+id/tvNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_4sdp"
         android:text="Number"
+        android:layout_marginEnd="@dimen/_16sdp"
         android:textColor="?attr/colorOnSecondary"
         android:textSize="@dimen/_12ssp"
-        app:layout_constraintEnd_toEndOf="@+id/ratingBar"
-        app:layout_constraintTop_toBottomOf="@+id/tvPlantName" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvPlantName" />
 
     <TextView
         android:id="@+id/tvDescription"
@@ -69,7 +58,7 @@
         android:textSize="@dimen/_12ssp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvColor" />
+        app:layout_constraintTop_toBottomOf="@+id/tvType" />
 
     <TextView
         android:id="@+id/tvPrice"

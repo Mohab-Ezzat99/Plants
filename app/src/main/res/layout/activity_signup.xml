@@ -44,6 +44,75 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/itl_phone"
+            style="@style/TextInputLayoutStyle"
+            android:layout_width="@dimen/_270sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:hint="Phone"
+            android:textColorHint="@color/gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/itl_email">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_phone"
+                android:drawablePadding="@dimen/_8sdp"
+                android:inputType="phone"
+                android:textColor="?attr/colorOnSecondary" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/itl_address"
+            style="@style/TextInputLayoutStyle"
+            android:layout_width="@dimen/_270sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:hint="Address"
+            android:textColorHint="@color/gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/itl_phone">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_address"
+                android:drawablePadding="@dimen/_8sdp"
+                android:inputType="text"
+                android:textColor="?attr/colorOnSecondary" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/itl_house"
+            style="@style/TextInputLayoutStyle"
+            android:layout_width="@dimen/_270sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:hint="House number"
+            android:textColorHint="@color/gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/itl_address">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_house"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_house"
+                android:drawablePadding="@dimen/_8sdp"
+                android:inputType="number"
+                android:textColor="?attr/colorOnSecondary" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/itl_password"
             style="@style/TextInputLayoutStyle"
             android:layout_width="0dp"
@@ -53,7 +122,7 @@
             android:textColorHint="@color/gray"
             app:layout_constraintEnd_toEndOf="@+id/itl_email"
             app:layout_constraintStart_toStartOf="@+id/itl_email"
-            app:layout_constraintTop_toBottomOf="@+id/itl_email"
+            app:layout_constraintTop_toBottomOf="@+id/itl_house"
             app:passwordToggleEnabled="true"
             app:passwordToggleTint="?attr/colorPrimaryVariant">
 

@@ -36,10 +36,9 @@ public class AddPlantActivity extends AppCompatActivity implements SelectImagesA
             selectedImage =plantModel.getPlantImage();
             selectImagesAdapter.setSelected(plantModel.getPlantImage());
             binding.etPlantName.setText(plantModel.getPlantName());
-            binding.etColor.setText(plantModel.getColor());
+            binding.etType.setText(plantModel.getType());
             binding.etQty.setText(plantModel.getQty() + "");
             binding.etPrice.setText(plantModel.getPrice() + "");
-            binding.etRate.setText(plantModel.getRate() + "");
             binding.etDescription.setText(plantModel.getDescription());
         }
 
@@ -54,27 +53,47 @@ public class AddPlantActivity extends AppCompatActivity implements SelectImagesA
 
     private void validateAndSubmit() {
         String plantName = Objects.requireNonNull(binding.etPlantName.getText()).toString();
-        String color = Objects.requireNonNull(binding.etColor.getText()).toString();
+        String type = Objects.requireNonNull(binding.etType.getText()).toString();
         String qty = Objects.requireNonNull(binding.etQty.getText()).toString();
         String price = Objects.requireNonNull(binding.etPrice.getText()).toString();
-        String rate = Objects.requireNonNull(binding.etRate.getText()).toString();
         String description = Objects.requireNonNull(binding.etDescription.getText()).toString();
 
-        boolean isEmpty = selectedImage == -1 || plantName.isEmpty() || color.isEmpty() ||
-                qty.isEmpty() || price.isEmpty() || rate.isEmpty() || description.isEmpty();
+        if (selectedImage==-1) {
+            Toast.makeText(this, "image is required!", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-        if (isEmpty) {
-            Toast.makeText(this, "fields are required", Toast.LENGTH_SHORT).show();
+        if (plantName.isEmpty()) {
+            Toast.makeText(this, "plant name is required!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (type.isEmpty()) {
+            Toast.makeText(this, "type of plant is required!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (qty.isEmpty()) {
+            Toast.makeText(this, "quantity is required!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (price.isEmpty()) {
+            Toast.makeText(this, "price is required!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (description.isEmpty()) {
+            Toast.makeText(this, "description is required!", Toast.LENGTH_SHORT).show();
             return;
         }
 
         if (this.plantModel != null) {
             this.plantModel.setPlantName(plantName);
             this.plantModel.setPlantImage(selectedImage);
-            this.plantModel.setColor(color);
+            this.plantModel.setType(type);
             this.plantModel.setDescription(description);
             this.plantModel.setPrice(Float.parseFloat(price));
-            this.plantModel.setRate(Float.parseFloat(rate));
             this.plantModel.setQty(Integer.parseInt(qty));
             viewModel.updatePlant(this.plantModel);
             Toast.makeText(this, "Plant updated successfully", Toast.LENGTH_SHORT).show();
@@ -82,10 +101,9 @@ public class AddPlantActivity extends AppCompatActivity implements SelectImagesA
             PlantModel plantModel = new PlantModel(
                     plantName,
                     selectedImage,
-                    color,
+                    type,
                     description,
                     Float.parseFloat(price),
-                    Float.parseFloat(rate),
                     Integer.parseInt(qty)
             );
             viewModel.insertPlant(plantModel);

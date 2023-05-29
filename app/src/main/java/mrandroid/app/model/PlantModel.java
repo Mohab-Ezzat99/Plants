@@ -12,19 +12,17 @@ public class PlantModel implements Serializable {
     private int id;
     private String plantName;
     private int plantImage;
-    private String color;
+    private String type;
     private String description;
     private float price;
-    private float rate;
     private int qty = 1;
 
-    public PlantModel(String plantName, int plantImage, String color, String description, float price, float rate, int qty) {
+    public PlantModel(String plantName, int plantImage, String type, String description, float price, int qty) {
         this.plantName = plantName;
         this.plantImage = plantImage;
-        this.color = color;
+        this.type = type;
         this.description = description;
         this.price = price;
-        this.rate = rate;
         this.qty = qty;
     }
 
@@ -52,12 +50,12 @@ public class PlantModel implements Serializable {
         this.plantImage = plantImage;
     }
 
-    public String getColor() {
-        return color;
+    public String getType() {
+        return type;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getDescription() {
@@ -76,14 +74,6 @@ public class PlantModel implements Serializable {
         this.price = price;
     }
 
-    public float getRate() {
-        return rate;
-    }
-
-    public void setRate(float rate) {
-        this.rate = rate;
-    }
-
     public int getQty() {
         return qty;
     }
@@ -93,6 +83,6 @@ public class PlantModel implements Serializable {
     }
 
     public CartModel toCartModel(int qty) {
-        return new CartModel(id,plantName, plantImage, color, description, price, rate, qty);
+        return new CartModel(id,plantName, plantImage, type, description, price, qty);
     }
 }

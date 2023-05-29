@@ -44,11 +44,11 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/itl_color"
+            android:id="@+id/itl_type"
             style="@style/TextInputLayoutStyle"
             android:layout_width="@dimen/_270sdp"
             android:layout_height="wrap_content"
-            android:hint="Color"
+            android:hint="Type of plant"
             android:layout_marginTop="@dimen/_8sdp"
             android:textColorHint="@color/gray"
             app:layout_constraintEnd_toEndOf="parent"
@@ -56,7 +56,7 @@
             app:layout_constraintTop_toBottomOf="@+id/itl_plantName">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_color"
+                android:id="@+id/et_type"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="text"
@@ -73,7 +73,7 @@
             android:textColorHint="@color/gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/itl_color">
+            app:layout_constraintTop_toBottomOf="@+id/itl_type">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_qty"
@@ -104,26 +104,6 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/itl_rate"
-            style="@style/TextInputLayoutStyle"
-            android:layout_width="@dimen/_270sdp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_8sdp"
-            android:hint="Rate"
-            android:textColorHint="@color/gray"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/itl_price">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_rate"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:inputType="number"
-                android:textColor="?attr/colorOnSecondary" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/itl_description"
             style="@style/TextInputLayoutStyle"
             android:layout_width="@dimen/_270sdp"
@@ -133,7 +113,7 @@
             android:textColorHint="@color/gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/itl_rate">
+            app:layout_constraintTop_toBottomOf="@+id/itl_price">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_description"

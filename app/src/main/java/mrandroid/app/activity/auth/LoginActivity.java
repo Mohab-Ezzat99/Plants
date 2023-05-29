@@ -46,9 +46,13 @@ public class LoginActivity extends AppCompatActivity {
         String email = binding.etEmail.getText().toString().trim();
         String password = binding.etPassword.getText().toString().trim();
 
-        boolean isEmpty = email.isEmpty() || password.isEmpty();
-        if (isEmpty) {
-            Toast.makeText(this, "Data is required!", Toast.LENGTH_SHORT).show();
+        if (email.isEmpty()) {
+            Toast.makeText(this, "email is required!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if (password.isEmpty()) {
+            Toast.makeText(this, "password is required!", Toast.LENGTH_SHORT).show();
             return false;
         }
 

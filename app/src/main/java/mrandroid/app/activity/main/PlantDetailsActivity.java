@@ -40,6 +40,15 @@ public class PlantDetailsActivity extends AppCompatActivity {
         if(Constants.IS_ADMIN) binding.tvNumber.setVisibility(View.INVISIBLE);
         else binding.tvNumber.setVisibility(View.VISIBLE);
 
+        if(Constants.IS_ADMIN) binding.ivPlus.setVisibility(View.INVISIBLE);
+        else binding.ivPlus.setVisibility(View.VISIBLE);
+
+        if(Constants.IS_ADMIN) binding.tvQty.setVisibility(View.INVISIBLE);
+        else binding.tvQty.setVisibility(View.VISIBLE);
+
+        if(Constants.IS_ADMIN) binding.ivMinus.setVisibility(View.INVISIBLE);
+        else binding.ivMinus.setVisibility(View.VISIBLE);
+
         viewModel = new ViewModelProvider(this).get(ViewModel.class);
         viewModel.getPlantById(plantId).observe(this, plantModel -> {
             if(plantModel==null) return;

@@ -34,9 +34,9 @@ public class SignupActivity extends AppCompatActivity {
 
     private boolean checkValidation() {
         String email = binding.etEmail.getText().toString().trim();
-        String phone = binding.etPhone.getText().toString().trim();
-        String address = binding.etAddress.getText().toString().trim();
-        String house = binding.etHouse.getText().toString().trim();
+//        String phone = binding.etPhone.getText().toString().trim();
+//        String address = binding.etAddress.getText().toString().trim();
+//        String house = binding.etHouse.getText().toString().trim();
         String password = binding.etPassword.getText().toString().trim();
         String confirmPassword = binding.etConfPassword.getText().toString().trim();
 
@@ -45,20 +45,20 @@ public class SignupActivity extends AppCompatActivity {
             return false;
         }
 
-        if (phone.isEmpty()) {
-            Toast.makeText(this, "phone is required!", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-
-        if (address.isEmpty()) {
-            Toast.makeText(this, "address is required!", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-
-        if (house.isEmpty()) {
-            Toast.makeText(this, "house number is required!", Toast.LENGTH_SHORT).show();
-            return false;
-        }
+//        if (phone.isEmpty()) {
+//            Toast.makeText(this, "phone is required!", Toast.LENGTH_SHORT).show();
+//            return false;
+//        }
+//
+//        if (address.isEmpty()) {
+//            Toast.makeText(this, "address is required!", Toast.LENGTH_SHORT).show();
+//            return false;
+//        }
+//
+//        if (house.isEmpty()) {
+//            Toast.makeText(this, "house number is required!", Toast.LENGTH_SHORT).show();
+//            return false;
+//        }
 
         if (password.isEmpty()) {
             Toast.makeText(this, "password is required!", Toast.LENGTH_SHORT).show();

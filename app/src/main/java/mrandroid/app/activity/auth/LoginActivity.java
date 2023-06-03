@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-import mrandroid.app.R;
 import mrandroid.app.activity.main.HomeActivity;
 import mrandroid.app.databinding.ActivityLoginBinding;
 import mrandroid.app.util.Constants;
@@ -65,6 +64,16 @@ public class LoginActivity extends AppCompatActivity {
         String password = binding.etPassword.getText().toString().trim();
         FirebaseAuth auth = FirebaseAuth.getInstance();
 
+        if (email.equals("admin@admin.com") && password.equals("admin")) {
+            Toast.makeText(getBaseContext(), "Welcome! Login Successfully", Toast.LENGTH_LONG).show();
+
+            Constants.IS_LOGIN = true;
+            Constants.IS_ADMIN = true;
+            startActivity(new Intent(getBaseContext(), HomeActivity.class));
+            finish();
+            return;
+        }
+
         loadingDialog.display();
         auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(task -> {
@@ -73,8 +82,7 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(getBaseContext(), "Welcome! Login Successfully", Toast.LENGTH_LONG).show();
 
                         Constants.IS_LOGIN = true;
-                        Constants.IS_ADMIN =
-                                (binding.radioGroup.getCheckedRadioButtonId() == R.id.rbAdmin);
+                        Constants.IS_ADMIN = false;
                         startActivity(new Intent(getBaseContext(), HomeActivity.class));
                         finish();
                     } else {

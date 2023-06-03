@@ -61,6 +61,7 @@ public class HomeActivity extends AppCompatActivity implements PlantsAdapter.OnI
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         menu.getItem(0).setVisible(Constants.IS_ADMIN);
+        menu.getItem(1).setVisible(!Constants.IS_ADMIN);
         return true;
     }
 
@@ -77,7 +78,7 @@ public class HomeActivity extends AppCompatActivity implements PlantsAdapter.OnI
         }
         if (item.getItemId() == R.id.menu_contact) {
             Intent intent = new Intent(Intent.ACTION_DIAL);
-            intent.setData(Uri.parse("tel:01203334444"));
+            intent.setData(Uri.parse("tel:+966550317128"));
             startActivity(intent);
             return true;
         }
